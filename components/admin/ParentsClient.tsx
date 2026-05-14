@@ -32,8 +32,8 @@ function ParentForm({ parent, onClose }: { parent: any; onClose: () => void }) {
     const payload = {
       ...form,
       age_years: form.age_years ? Number(form.age_years) : null,
-      health_tests: form.health_tests ? form.health_tests.split(',').map(s => s.trim()).filter(Boolean) : [],
-      certifications: form.certifications ? form.certifications.split(',').map(s => s.trim()).filter(Boolean) : [],
+      health_tests: form.health_tests ? form.health_tests.split(',').map((s: string) => s.trim()).filter(Boolean) : [],
+      certifications: form.certifications ? form.certifications.split(',').map((s: string) => s.trim()).filter(Boolean) : [],
     };
     const url = isEdit ? `/api/parents/${parent.id}` : '/api/parents';
     const res = await fetch(url, { method: isEdit ? 'PATCH' : 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
