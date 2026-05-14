@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Merriweather:wght@300;400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bark: #5C3D1E;
+  --moss: #4A6741;
+  --cream: #F5EDD6;
+  --tan: #C49A5A;
+  --field: #1C2B1A;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #F5EDD6; color: #2D1F0E; font-family: 'DM Sans', sans-serif; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #E8D9B8; }
+::-webkit-scrollbar-thumb { background: #5C3D1E; border-radius: 3px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+.fade-up { animation: fadeUp 0.7s ease forwards; }
+
+.rustic-card {
+  background: #FDF6E3;
+  border: 1px solid #C49A5A40;
+  border-radius: 12px;
+}
+
+.rustic-btn {
+  background: #5C3D1E;
+  color: #F5EDD6;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.rustic-btn:hover { background: #4A6741; }
+
+.moss-btn {
+  background: #4A6741;
+  color: #F5EDD6;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.moss-btn:hover { background: #5C3D1E; }
+
+.wood-texture {
+  background: linear-gradient(135deg, #5C3D1E 0%, #8B6340 50%, #5C3D1E 100%);
+}
+
+.field-bg {
+  background: linear-gradient(180deg, #1C2B1A 0%, #243622 100%);
+}
