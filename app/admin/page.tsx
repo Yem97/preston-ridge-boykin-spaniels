@@ -19,7 +19,7 @@ async function getStats() {
     reserved: puppies.filter((x: any) => x.status === 'reserved').length,
     applications: apps.length,
     unread: apps.filter((x: any) => !x.is_read).length,
-    pending: apps.filter((x: any) => x.status === 'pending').length,
+    pendingApplications: apps.filter((x: any) => x.status === 'pending').length,
     pendingReviews: reviews.filter((x: any) => !x.is_approved).length,
     gallery: (g.data || []).length,
   };
@@ -29,14 +29,14 @@ export default async function AdminDashboard() {
   const stats = await getStats();
 
   const cards = [
-    { label: 'Total Puppies', value: stats.total, color: 'text-bark', href: '/admin/puppies', emoji: '🐕' },
-    { label: 'Available', value: stats.available, color: 'text-moss', href: '/admin/puppies', emoji: '✅' },
-    { label: 'Reserved', value: stats.reserved, color: 'text-tan', href: '/admin/puppies', emoji: '⏳' },
-    { label: 'Applications', value: stats.applications, color: 'text-bark', href: '/admin/applications', emoji: '📋' },
-    { label: 'Pending Review', value: stats.pending, color: 'text-red-600', href: '/admin/applications', emoji: '🔴' },
-    { label: 'Unread', value: stats.unread, color: 'text-red-500', href: '/admin/applications', emoji: '📬' },
-    { label: 'Pending Reviews', value: stats.pendingReviews, color: 'text-tan', href: '/admin/reviews', emoji: '⭐' },
-    { label: 'Gallery Photos', value: stats.gallery, color: 'text-moss', href: '/admin/gallery', emoji: '📸' },
+    { label: 'Total Puppies', value: stats.total, emoji: '🐕', href: '/admin/puppies' },
+    { label: 'Available', value: stats.available, emoji: '✅', href: '/admin/puppies' },
+    { label: 'Reserved', value: stats.reserved, emoji: '⏳', href: '/admin/puppies' },
+    { label: 'Applications', value: stats.applications, emoji: '📋', href: '/admin/applications' },
+    { label: 'Pending Applications', value: stats.pendingApplications, emoji: '🔴', href: '/admin/applications' },
+    { label: 'Unread', value: stats.unread, emoji: '📬', href: '/admin/applications' },
+    { label: 'Pending Reviews', value: stats.pendingReviews, emoji: '⭐', href: '/admin/reviews' },
+    { label: 'Gallery Photos', value: stats.gallery, emoji: '📸', href: '/admin/gallery' },
   ];
 
   return (
@@ -45,26 +45,47 @@ export default async function AdminDashboard() {
         <h1 className="font-display text-3xl font-bold text-bark-dark">Dashboard 🐕</h1>
         <p className="text-bark-light text-sm mt-1">Welcome back to Preston Ridge Boykin Spaniels</p>
       </div>
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         {cards.map(c => (
-          <Link key={c.label} href={c.href} className="rustic-card p-5 hover:shadow-md transition">
-            <div className="text-2xl mb-1">{c.emoji}</div>
-            <p className={`text-3xl font-display font-bold mb-1 ${c.color}`}>{c.value}</p>
+          <Link key={c.label} href={c.href}
+            className="rustic-card p-5 hover:shadow-md transition hover:border-tan/50">
+            <div className="text-2xl mb-2">{c.emoji}</div>
+            <p className="text-3xl font-display font-bold text-bark-dark mb-1">{c.value}</p>
             <p className="text-xs text-bark-light">{c.label}</p>
           </Link>
         ))}
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {stats.pending > 0 && (
-          <div className="rustic-card p-6 border-l-4 border-bark">
-            <h3 className="font-semibold text-bark-dark mb-2">📋 {stats.pending} application{stats.pending > 1 ? 's' : ''} waiting for review</h3>
-            <Link href="/admin/applications" className="text-bark text-sm hover:underline">Review applications →</Link>
+        {stats.pendingApplications > 0 && (
+          <div className="rustic-card p-6 border-l-4 border-l-bark">
+            <h3 className="font-semibold text-bark-dark mb-2">
+              📋 {stats.pendingApplications} application{stats.pendingApplications > 1 ? 's' : ''} waiting for review
+            </h3>
+            <Link href="/admin/applications" className="text-bark text-sm hover:underline">
+              Review applications →
+            </Link>
           </div>
         )}
         {stats.pendingReviews > 0 && (
-          <div className="rustic-card p-6 border-l-4 border-tan">
-            <h3 className="font-semibold text-bark-dark mb-2">⭐ {stats.pendingReviews} review{stats.pendingReviews > 1 ? 's' : ''} awaiting approval</h3>
-            <Link href="/admin/reviews" className="text-bark text-sm hover:underline">Review now →</Link>
+          <div className="rustic-card p-6 border-l-4 border-l-tan">
+            <h3 className="font-semibold text-bark-dark mb-2">
+              ⭐ {stats.pendingReviews} review{stats.pendingReviews > 1 ? 's' : ''} awaiting approval
+            </h3>
+            <Link href="/admin/reviews" className="text-bark text-sm hover:underline">
+              Review now →
+            </Link>
+          </div>
+        )}
+        {stats.unread > 0 && (
+          <div className="rustic-card p-6 border-l-4 border-l-moss">
+            <h3 className="font-semibold text-bark-dark mb-2">
+              📬 {stats.unread} unread application{stats.unread > 1 ? 's' : ''}
+            </h3>
+            <Link href="/admin/applications" className="text-bark text-sm hover:underline">
+              View applications →
+            </Link>
           </div>
         )}
       </div>
