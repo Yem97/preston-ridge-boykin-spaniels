@@ -5,20 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Merriweather:wght@300;400;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --bark: #7C3AED;
-  --moss: #2563EB;
-  --cream: #0A0A1A;
-  --tan: #A78BFA;
-  --field: #04040F;
+  --bark: #B8622C;
+  --moss: #5C3A1E;
+  --cream: #F5EFE0;
+  --tan: #D4956A;
+  --field: #2D2D2D;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: #0A0A1A; color: #E2E8F0; font-family: 'DM Sans', sans-serif; }
+body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0e0e22; }
-::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #EDE5D0; }
+::-webkit-scrollbar-thumb { background: #B8622C; border-radius: 3px; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -28,37 +28,38 @@ body { background: #0A0A1A; color: #E2E8F0; font-family: 'DM Sans', sans-serif; 
   0%, 100% { transform: rotate(-1deg); }
   50% { transform: rotate(1deg); }
 }
-@keyframes aurora-shift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes orb-drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.18; }
-  50%       { transform: translate(40px, -20px) scale(1.25); opacity: 0.28; }
-}
-@keyframes orb-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.12; }
-  50%       { transform: translate(-30px, 20px) scale(0.85); opacity: 0.22; }
-}
-@keyframes orb-drift-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.1; }
-  33%       { transform: translate(15px, 30px) scale(1.1); opacity: 0.18; }
-  66%       { transform: translate(-20px, -10px) scale(0.9); opacity: 0.15; }
-}
 @keyframes shimmer-text {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 @keyframes btn-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(124,58,237,0.5); }
-  50%       { box-shadow: 0 0 22px rgba(124,58,237,0.8), 0 0 40px rgba(37,99,235,0.3); }
+  0%, 100% { box-shadow: 0 0 8px rgba(184,98,44,0.4); }
+  50%       { box-shadow: 0 0 24px rgba(184,98,44,0.7), 0 0 44px rgba(212,149,106,0.3); }
+}
+@keyframes paw-float {
+  0%   { transform: translateY(0) scale(1);        opacity: 0; }
+  15%  { opacity: 0.45; }
+  85%  { opacity: 0.2; }
+  100% { transform: translateY(-130px) scale(0.75); opacity: 0; }
+}
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1);          opacity: 0.14; }
+  50%       { transform: translate(35px, -18px) scale(1.2); opacity: 0.22; }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1);           opacity: 0.10; }
+  50%       { transform: translate(-25px, 18px) scale(0.85); opacity: 0.18; }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1);            opacity: 0.08; }
+  33%       { transform: translate(12px, 20px) scale(1.1);   opacity: 0.14; }
+  66%       { transform: translate(-15px, -8px) scale(0.9);  opacity: 0.10; }
 }
 
 .fade-up { animation: fadeUp 0.7s ease forwards; }
 
 .shimmer-text {
-  background: linear-gradient(90deg, #A78BFA, #60A5FA, #A78BFA, #7C3AED, #A78BFA);
+  background: linear-gradient(90deg, #B8622C, #D4956A, #F5EFE0, #D4956A, #B8622C);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -67,68 +68,81 @@ body { background: #0A0A1A; color: #E2E8F0; font-family: 'DM Sans', sans-serif; 
 }
 
 .rustic-card {
-  background: #111128;
-  border: 1px solid rgba(124,58,237,0.2);
+  background: #ffffff;
+  border: 1px solid rgba(184,98,44,0.15);
   border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(124,58,237,0.08);
+  box-shadow: 0 2px 16px rgba(184,98,44,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.rustic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(184,98,44,0.15);
 }
 
 .rustic-btn {
-  background: linear-gradient(135deg, #7C3AED, #2563EB);
-  color: #fff;
+  background: linear-gradient(135deg, #B8622C, #8B4A1E);
+  color: #F5EFE0;
   border-radius: 8px;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.2s;
   animation: btn-glow 2.5s ease infinite;
 }
-.rustic-btn:hover { background: linear-gradient(135deg, #6D28D9, #1D4ED8); }
+.rustic-btn:hover {
+  background: linear-gradient(135deg, #C97A44, #B8622C);
+  transform: translateY(-1px);
+}
 
 .moss-btn {
-  background: linear-gradient(135deg, #2563EB, #7C3AED);
-  color: #fff;
+  background: linear-gradient(135deg, #5C3A1E, #B8622C);
+  color: #F5EFE0;
   border-radius: 8px;
   font-family: 'DM Sans', sans-serif;
   font-weight: 500;
   transition: all 0.2s;
 }
-.moss-btn:hover { background: linear-gradient(135deg, #1D4ED8, #6D28D9); }
+.moss-btn:hover { background: linear-gradient(135deg, #7A5232, #C97A44); }
 
 .wood-texture {
-  background: linear-gradient(135deg, #7C3AED 0%, #9061F9 50%, #7C3AED 100%);
+  background: linear-gradient(135deg, #B8622C 0%, #C97A44 50%, #B8622C 100%);
 }
 
 .field-bg {
-  background: linear-gradient(270deg, #04040F, #0d0628, #060b1e, #110828, #04040F);
-  background-size: 400% 400%;
-  animation: aurora-shift 12s ease infinite;
+  background: linear-gradient(170deg, #2D2D2D 0%, #3D3D3D 60%, #2D2D2D 100%);
 }
 
+/* Warm chestnut ambient orbs */
 .aurora-orb-1 {
   position: absolute;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%);
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(184,98,44,0.18), transparent 70%);
   border-radius: 50%;
   top: -100px; left: -100px;
-  animation: orb-drift-1 8s ease-in-out infinite;
+  animation: orb-drift-1 10s ease-in-out infinite;
   pointer-events: none;
 }
 .aurora-orb-2 {
   position: absolute;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(37,99,235,0.2), transparent 70%);
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(212,149,106,0.14), transparent 70%);
   border-radius: 50%;
-  bottom: -50px; right: -50px;
-  animation: orb-drift-2 11s ease-in-out infinite;
+  bottom: -60px; right: -60px;
+  animation: orb-drift-2 13s ease-in-out infinite;
   pointer-events: none;
 }
 .aurora-orb-3 {
   position: absolute;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(167,139,250,0.15), transparent 70%);
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(245,239,224,0.06), transparent 70%);
   border-radius: 50%;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  animation: orb-drift-3 14s ease-in-out infinite;
+  top: calc(50% - 140px);
+  left: calc(50% - 140px);
+  animation: orb-drift-3 16s ease-in-out infinite;
   pointer-events: none;
 }
+
+/* Floating paw prints in hero */
+.paw-1 { position: absolute; font-size: 22px; left: 8%;  bottom: 22%; animation: paw-float 6s ease-in-out infinite;     pointer-events: none; }
+.paw-2 { position: absolute; font-size: 17px; left: 79%; bottom: 30%; animation: paw-float 8s ease-in-out 2s infinite;   pointer-events: none; }
+.paw-3 { position: absolute; font-size: 15px; left: 23%; bottom: 14%; animation: paw-float 7s ease-in-out 4s infinite;   pointer-events: none; }
+.paw-4 { position: absolute; font-size: 19px; left: 63%; bottom: 10%; animation: paw-float 9s ease-in-out 1s infinite;   pointer-events: none; }
