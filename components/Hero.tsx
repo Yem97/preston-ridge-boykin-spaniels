@@ -19,7 +19,7 @@ export default function Hero() {
       {/* Aurora animated background */}
       <div className="absolute inset-0 field-bg" />
       {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%232D6A4F\' fill-opacity=\'0.15\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
+      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23E8A020\' fill-opacity=\'0.12\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
       {/* Soft green ambient orbs */}
       <div className="aurora-orb-1" />
       <div className="aurora-orb-2" />
@@ -54,7 +54,7 @@ export default function Hero() {
           <Link href="/#puppies" className="rustic-btn px-8 py-4 text-base inline-block">
             View Available Puppies
           </Link>
-          <Link href="/apply" className="border border-tan/50 text-tan font-medium px-8 py-4 rounded-lg hover:bg-tan/10 transition text-base inline-block">
+          <Link href="/apply" className="border border-bark/30 text-bark font-medium px-8 py-4 rounded-full hover:bg-bark/5 transition text-base inline-block">
             Apply for a Puppy
           </Link>
         </div>

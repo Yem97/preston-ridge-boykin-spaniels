@@ -64,7 +64,7 @@ export default async function Home() {
           <p className="text-white/50 text-sm mb-10">We respond to all applications within 2-3 business days.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply" className="rustic-btn px-8 py-4 text-base inline-block">Submit an Application</Link>
-            <Link href="/breed" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-lg hover:bg-tan/10 transition text-base inline-block">Learn About the Breed</Link>
+            <Link href="/breed" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-full hover:bg-tan/10 transition text-base inline-block">Learn About the Breed</Link>
           </div>
         </div>
       </section>
