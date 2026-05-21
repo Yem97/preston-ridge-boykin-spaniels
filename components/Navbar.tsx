@@ -30,19 +30,19 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 rounded-full bg-tan flex items-center justify-center text-sm">🐕</div>
             <div>
-              <div className="font-display text-base font-semibold text-cream leading-tight">Preston Ridge</div>
+              <div className="font-display text-base font-semibold text-white leading-tight">Preston Ridge</div>
               <div className="text-tan text-xs font-light tracking-widest uppercase leading-tight">Boykin Spaniels</div>
             </div>
           </Link>
           <div className="hidden lg:flex items-center gap-6">
             {links.map(l => (
-              <Link key={l.href} href={l.href} className="text-xs text-cream/80 hover:text-tan transition font-light tracking-wide uppercase">{l.label}</Link>
+              <Link key={l.href} href={l.href} className="text-xs text-white/80 hover:text-tan transition font-light tracking-wide uppercase">{l.label}</Link>
             ))}
           </div>
           <div className="hidden lg:flex">
             <Link href="/apply" className="rustic-btn px-5 py-2 text-sm">Apply for a Puppy</Link>
           </div>
-          <button onClick={() => setOpen(!open)} className="lg:hidden text-cream hover:text-tan transition">
+          <button onClick={() => setOpen(!open)} className="lg:hidden text-white hover:text-tan transition">
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="lg:hidden bg-field border-t border-tan/20">
           <div className="px-4 py-4 space-y-3">
             {links.map(l => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="block text-sm text-cream/80 hover:text-tan transition py-1.5 uppercase tracking-wide">{l.label}</Link>
+              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="block text-sm text-white/80 hover:text-tan transition py-1.5 uppercase tracking-wide">{l.label}</Link>
             ))}
             <Link href="/apply" onClick={() => setOpen(false)} className="block text-center rustic-btn px-5 py-3 mt-2 text-sm">Apply for a Puppy</Link>
           </div>

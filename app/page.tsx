@@ -33,9 +33,9 @@ export default async function Home() {
       <div className="bg-bark py-4 px-4">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-8">
           {[{ icon: Shield, label: 'BSS Registered Breeder' }, { icon: Award, label: 'AKC Registered' }, { icon: Star, label: 'UKC Registered' }].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2 text-cream/80 text-sm"><Icon size={16} className="text-tan" />{label}</div>
+            <div key={label} className="flex items-center gap-2 text-white/80 text-sm"><Icon size={16} className="text-tan" />{label}</div>
           ))}
-          <div className="flex items-center gap-2 text-cream/80 text-sm">❤️ OFA Health Tested</div>
+          <div className="flex items-center gap-2 text-white/80 text-sm">❤️ OFA Health Tested</div>
         </div>
       </div>
 
@@ -57,11 +57,11 @@ export default async function Home() {
       <ReviewsSection />
 
       {/* Application CTA */}
-      <section className="py-20 bg-field text-cream px-4">
+      <section className="py-20 bg-field text-white px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Ready to Apply?</h2>
-          <p className="text-cream/70 text-lg mb-4">We take our time matching each puppy with the right family. Our formal application process ensures every Preston Ridge puppy goes to a loving, prepared home.</p>
-          <p className="text-cream/50 text-sm mb-10">We respond to all applications within 2-3 business days.</p>
+          <p className="text-white/70 text-lg mb-4">We take our time matching each puppy with the right family. Our formal application process ensures every Preston Ridge puppy goes to a loving, prepared home.</p>
+          <p className="text-white/50 text-sm mb-10">We respond to all applications within 2-3 business days.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply" className="rustic-btn px-8 py-4 text-base inline-block">Submit an Application</Link>
             <Link href="/breed" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-lg hover:bg-tan/10 transition text-base inline-block">Learn About the Breed</Link>

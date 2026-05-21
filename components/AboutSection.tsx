@@ -28,10 +28,10 @@ export default function AboutSection() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 border border-tan/40 text-bark text-xs px-4 py-2 rounded-full mb-6 tracking-widest uppercase bg-cream">
+            <div className="inline-flex items-center gap-2 border border-tan/40 text-tan text-xs px-4 py-2 rounded-full mb-6 tracking-widest uppercase bg-parchment">
               🌿 Our Story
             </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-bark-dark mb-4 leading-tight">{name}</h2>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">{name}</h2>
             <p className="text-tan font-rustic text-sm mb-6 italic">{tagline}</p>
             <p className="text-bark-light leading-relaxed mb-6">{bio}</p>
             <div className="flex items-center gap-2 text-bark-light text-sm mb-8">
@@ -67,9 +67,9 @@ export default function AboutSection() {
               }
               <div className="absolute inset-0 bg-gradient-to-t from-bark-dark/30 to-transparent" />
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-bark text-cream rounded-xl p-4 shadow-xl">
+            <div className="absolute -bottom-4 -right-4 bg-bark text-white rounded-xl p-4 shadow-xl">
               <p className="font-display text-xl font-bold">Field Ready</p>
-              <p className="text-cream/70 text-xs">& Family Loved</p>
+              <p className="text-white/70 text-xs">& Family Loved</p>
             </div>
           </div>
         </div>
