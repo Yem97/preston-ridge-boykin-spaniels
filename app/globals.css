@@ -5,20 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Merriweather:wght@300;400;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --bark: #B8622C;
-  --moss: #5C3A1E;
-  --cream: #F5EFE0;
-  --tan: #D4956A;
-  --field: #2D2D2D;
+  --bark: #2D6A4F;
+  --moss: #52B788;
+  --cream: #FAFAF5;
+  --tan: #52B788;
+  --field: #1A1A1A;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; }
+body { background: #FAFAF5; color: #1A1A1A; font-family: 'DM Sans', sans-serif; }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #EDE5D0; }
-::-webkit-scrollbar-thumb { background: #B8622C; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #F2EDE4; }
+::-webkit-scrollbar-thumb { background: #2D6A4F; border-radius: 3px; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -30,36 +30,36 @@ body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; 
 }
 @keyframes shimmer-text {
   0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  100% { background-position:  200% center; }
 }
 @keyframes btn-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(184,98,44,0.4); }
-  50%       { box-shadow: 0 0 24px rgba(184,98,44,0.7), 0 0 44px rgba(212,149,106,0.3); }
+  0%, 100% { box-shadow: 0 4px 16px rgba(45,106,79,0.30); }
+  50%       { box-shadow: 0 6px 28px rgba(45,106,79,0.55), 0 0 44px rgba(82,183,136,0.20); }
 }
 @keyframes paw-float {
   0%   { transform: translateY(0) scale(1);        opacity: 0; }
-  15%  { opacity: 0.45; }
-  85%  { opacity: 0.2; }
+  15%  { opacity: 0.40; }
+  85%  { opacity: 0.18; }
   100% { transform: translateY(-130px) scale(0.75); opacity: 0; }
 }
 @keyframes orb-drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1);          opacity: 0.14; }
-  50%       { transform: translate(35px, -18px) scale(1.2); opacity: 0.22; }
+  0%, 100% { transform: translate(0, 0) scale(1);          opacity: 0.12; }
+  50%       { transform: translate(35px, -18px) scale(1.2); opacity: 0.20; }
 }
 @keyframes orb-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1);           opacity: 0.10; }
-  50%       { transform: translate(-25px, 18px) scale(0.85); opacity: 0.18; }
+  0%, 100% { transform: translate(0, 0) scale(1);           opacity: 0.08; }
+  50%       { transform: translate(-25px, 18px) scale(0.85); opacity: 0.16; }
 }
 @keyframes orb-drift-3 {
-  0%, 100% { transform: translate(0, 0) scale(1);            opacity: 0.08; }
-  33%       { transform: translate(12px, 20px) scale(1.1);   opacity: 0.14; }
-  66%       { transform: translate(-15px, -8px) scale(0.9);  opacity: 0.10; }
+  0%, 100% { transform: translate(0, 0) scale(1);           opacity: 0.07; }
+  33%       { transform: translate(12px, 20px) scale(1.1);  opacity: 0.13; }
+  66%       { transform: translate(-15px, -8px) scale(0.9); opacity: 0.09; }
 }
 
 .fade-up { animation: fadeUp 0.7s ease forwards; }
 
 .shimmer-text {
-  background: linear-gradient(90deg, #B8622C, #D4956A, #F5EFE0, #D4956A, #B8622C);
+  background: linear-gradient(90deg, #2D6A4F, #52B788, #FAFAF5, #52B788, #2D6A4F);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -69,53 +69,54 @@ body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; 
 
 .rustic-card {
   background: #ffffff;
-  border: 1px solid rgba(184,98,44,0.15);
+  border: 1px solid rgba(45,106,79,0.12);
   border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(184,98,44,0.06);
+  box-shadow: 0 2px 12px rgba(45,106,79,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .rustic-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(184,98,44,0.15);
+  box-shadow: 0 10px 30px rgba(45,106,79,0.12);
 }
 
 .rustic-btn {
-  background: linear-gradient(135deg, #B8622C, #8B4A1E);
-  color: #F5EFE0;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #2D6A4F, #1D4F38);
+  color: #FAFAF5;
+  border-radius: 100px;
   font-family: 'DM Sans', sans-serif;
   font-weight: 600;
   transition: all 0.2s;
   animation: btn-glow 2.5s ease infinite;
 }
 .rustic-btn:hover {
-  background: linear-gradient(135deg, #C97A44, #B8622C);
+  background: linear-gradient(135deg, #3D8A65, #2D6A4F);
   transform: translateY(-1px);
 }
 
 .moss-btn {
-  background: linear-gradient(135deg, #5C3A1E, #B8622C);
-  color: #F5EFE0;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #1D4F38, #2D6A4F);
+  color: #FAFAF5;
+  border-radius: 100px;
   font-family: 'DM Sans', sans-serif;
   font-weight: 500;
   transition: all 0.2s;
 }
-.moss-btn:hover { background: linear-gradient(135deg, #7A5232, #C97A44); }
+.moss-btn:hover { background: linear-gradient(135deg, #2D6A4F, #52B788); }
 
 .wood-texture {
-  background: linear-gradient(135deg, #B8622C 0%, #C97A44 50%, #B8622C 100%);
+  background: linear-gradient(135deg, #2D6A4F 0%, #52B788 50%, #2D6A4F 100%);
 }
 
+/* Light warm-cream hero background */
 .field-bg {
-  background: linear-gradient(170deg, #2D2D2D 0%, #3D3D3D 60%, #2D2D2D 100%);
+  background: linear-gradient(170deg, #F2EDE4 0%, #EDE6D8 50%, #F2EDE4 100%);
 }
 
-/* Warm chestnut ambient orbs */
+/* Soft green ambient orbs */
 .aurora-orb-1 {
   position: absolute;
   width: 480px; height: 480px;
-  background: radial-gradient(circle, rgba(184,98,44,0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(45,106,79,0.10), transparent 70%);
   border-radius: 50%;
   top: -100px; left: -100px;
   animation: orb-drift-1 10s ease-in-out infinite;
@@ -124,7 +125,7 @@ body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; 
 .aurora-orb-2 {
   position: absolute;
   width: 380px; height: 380px;
-  background: radial-gradient(circle, rgba(212,149,106,0.14), transparent 70%);
+  background: radial-gradient(circle, rgba(82,183,136,0.08), transparent 70%);
   border-radius: 50%;
   bottom: -60px; right: -60px;
   animation: orb-drift-2 13s ease-in-out infinite;
@@ -133,7 +134,7 @@ body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; 
 .aurora-orb-3 {
   position: absolute;
   width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(245,239,224,0.06), transparent 70%);
+  background: radial-gradient(circle, rgba(216,243,220,0.15), transparent 70%);
   border-radius: 50%;
   top: calc(50% - 140px);
   left: calc(50% - 140px);
@@ -141,8 +142,8 @@ body { background: #F5EFE0; color: #2D2D2D; font-family: 'DM Sans', sans-serif; 
   pointer-events: none;
 }
 
-/* Floating paw prints in hero */
-.paw-1 { position: absolute; font-size: 22px; left: 8%;  bottom: 22%; animation: paw-float 6s ease-in-out infinite;     pointer-events: none; }
-.paw-2 { position: absolute; font-size: 17px; left: 79%; bottom: 30%; animation: paw-float 8s ease-in-out 2s infinite;   pointer-events: none; }
-.paw-3 { position: absolute; font-size: 15px; left: 23%; bottom: 14%; animation: paw-float 7s ease-in-out 4s infinite;   pointer-events: none; }
-.paw-4 { position: absolute; font-size: 19px; left: 63%; bottom: 10%; animation: paw-float 9s ease-in-out 1s infinite;   pointer-events: none; }
+/* Floating paw prints */
+.paw-1 { position: absolute; font-size: 22px; left: 8%;  bottom: 22%; animation: paw-float 6s ease-in-out infinite;   pointer-events: none; }
+.paw-2 { position: absolute; font-size: 17px; left: 79%; bottom: 30%; animation: paw-float 8s ease-in-out 2s infinite; pointer-events: none; }
+.paw-3 { position: absolute; font-size: 15px; left: 23%; bottom: 14%; animation: paw-float 7s ease-in-out 4s infinite; pointer-events: none; }
+.paw-4 { position: absolute; font-size: 19px; left: 63%; bottom: 10%; animation: paw-float 9s ease-in-out 1s infinite; pointer-events: none; }
