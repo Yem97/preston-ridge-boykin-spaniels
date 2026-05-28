@@ -59,14 +59,31 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative h-96 w-full rounded-2xl overflow-hidden border-2 border-tan/30 shadow-xl">
+          <div className="relative flex justify-center">
+            {/* Outer glow ring */}
+            <div className="absolute pointer-events-none" style={{
+              width: '310px', height: '390px',
+              borderRadius: '50%',
+              background: 'radial-gradient(ellipse, rgba(212,128,42,0.1) 0%, transparent 70%)',
+              border: '1px solid rgba(212,128,42,0.12)',
+            }} />
+
+            {/* Oval frame */}
+            <div className="relative overflow-hidden" style={{
+              width: '270px',
+              height: '340px',
+              borderRadius: '50%',
+              border: '2.5px solid rgba(212,128,42,0.45)',
+              background: '#FFF8EE',
+              boxShadow: '0 20px 50px rgba(74,30,8,0.18), 0 4px 16px rgba(74,30,8,0.1)',
+            }}>
               {profile?.avatar_url
-                ? <Image src={profile.avatar_url} alt="Breeder" fill className="object-cover" sizes="600px" />
-                : <div className="w-full h-full bg-cream-dark flex items-center justify-center text-8xl">🐕</div>
+                ? <Image src={profile.avatar_url} alt="Breeder" fill className="object-contain" sizes="290px" />
+                : <div className="w-full h-full flex items-center justify-center text-7xl">🐕</div>
               }
-              <div className="absolute inset-0 bg-gradient-to-t from-bark-dark/30 to-transparent" />
             </div>
+
+            {/* Badge */}
             <div className="absolute -bottom-4 -right-4 bg-bark text-cream rounded-xl p-4 shadow-xl">
               <p className="font-display text-xl font-bold">Field Ready</p>
               <p className="text-cream/70 text-xs">& Family Loved</p>
