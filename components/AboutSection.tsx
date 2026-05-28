@@ -62,24 +62,24 @@ export default function AboutSection() {
           <div className="relative flex justify-center">
             {/* Outer glow ring */}
             <div className="absolute pointer-events-none" style={{
-              width: '310px', height: '390px',
+              width: '420px', height: '420px',
               borderRadius: '50%',
               background: 'radial-gradient(ellipse, rgba(212,128,42,0.1) 0%, transparent 70%)',
               border: '1px solid rgba(212,128,42,0.12)',
             }} />
 
-            {/* Oval frame */}
+            {/* Circle frame */}
             <div className="relative overflow-hidden" style={{
-              width: '270px',
-              height: '340px',
+              width: '380px',
+              height: '380px',
               borderRadius: '50%',
-              border: '2.5px solid rgba(212,128,42,0.45)',
+              border: '3px solid rgba(212,128,42,0.45)',
               background: '#FFF8EE',
-              boxShadow: '0 20px 50px rgba(74,30,8,0.18), 0 4px 16px rgba(74,30,8,0.1)',
+              boxShadow: '0 24px 60px rgba(74,30,8,0.18), 0 6px 20px rgba(74,30,8,0.1)',
             }}>
               {profile?.avatar_url
-                ? <Image src={profile.avatar_url} alt="Breeder" fill className="object-contain" sizes="290px" />
-                : <div className="w-full h-full flex items-center justify-center text-7xl">🐕</div>
+                ? <Image src={profile.avatar_url} alt="Breeder" fill className="object-contain" sizes="400px" />
+                : <div className="w-full h-full flex items-center justify-center text-8xl">🐕</div>
               }
             </div>
 
