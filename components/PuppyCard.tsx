@@ -23,7 +23,7 @@ export default function PuppyCard({ puppy, onClick, onApply }: Props) {
       style={{ transition: 'box-shadow 0.25s ease, transform 0.25s ease' }}
       onMouseEnter={e => {
         (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 40px rgba(92,61,30,0.14), 0 4px 12px rgba(92,61,30,0.1)';
+        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 40px rgba(74,30,8,0.16), 0 4px 12px rgba(74,30,8,0.1)';
       }}
       onMouseLeave={e => {
         (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';

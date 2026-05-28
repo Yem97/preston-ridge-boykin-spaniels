@@ -23,19 +23,19 @@ export default function Hero() {
       <div className="absolute pointer-events-none" style={{
         width: '700px', height: '700px',
         top: '-180px', left: '-120px',
-        background: 'radial-gradient(circle, rgba(196,154,90,0.14) 0%, transparent 68%)',
+        background: 'radial-gradient(circle, rgba(212,128,42,0.16) 0%, transparent 68%)',
         animation: 'orb-drift 16s ease-in-out infinite',
       }} />
       <div className="absolute pointer-events-none" style={{
         width: '900px', height: '700px',
         top: '5%', right: '-250px',
-        background: 'radial-gradient(circle, rgba(139,99,64,0.11) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(100,40,8,0.14) 0%, transparent 65%)',
         animation: 'orb-drift 22s ease-in-out infinite reverse',
       }} />
       <div className="absolute pointer-events-none" style={{
         width: '800px', height: '600px',
         bottom: '80px', left: '10%',
-        background: 'radial-gradient(circle, rgba(74,103,65,0.09) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(74,30,8,0.1) 0%, transparent 65%)',
         animation: 'orb-drift 28s ease-in-out infinite',
       }} />
 
@@ -57,7 +57,7 @@ export default function Hero() {
         {/* Main headline */}
         <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6">
           <span className="text-cream">Preston Ridge</span><br />
-          <em className="text-tan italic" style={{ textShadow: '0 0 80px rgba(196,154,90,0.25)' }}>
+          <em className="text-tan italic" style={{ textShadow: '0 0 80px rgba(212,128,42,0.3)' }}>
             Boykin Spaniels
           </em>
         </h1>
