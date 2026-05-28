@@ -9,6 +9,7 @@ import FacebookFeed from '@/components/FacebookFeed';
 import ReviewsSection from '@/components/ReviewsSection';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import RevealSection from '@/components/RevealSection';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import type { Puppy } from '@/types';
 import Link from 'next/link';
@@ -32,8 +33,14 @@ export default async function Home() {
       {/* Certifications bar */}
       <div className="bg-bark py-4 px-4">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-8">
-          {[{ icon: Shield, label: 'BSS Registered Breeder' }, { icon: Award, label: 'AKC Registered' }, { icon: Star, label: 'UKC Registered' }].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2 text-cream/80 text-sm"><Icon size={16} className="text-tan" />{label}</div>
+          {[
+            { icon: Shield, label: 'BSS Registered Breeder' },
+            { icon: Award, label: 'AKC Registered' },
+            { icon: Star, label: 'UKC Registered' },
+          ].map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center gap-2 text-cream/80 text-sm">
+              <Icon size={15} className="text-tan" />{label}
+            </div>
           ))}
           <div className="flex items-center gap-2 text-cream/80 text-sm">❤️ OFA Health Tested</div>
         </div>
@@ -41,33 +48,57 @@ export default async function Home() {
 
       {/* Puppies section */}
       <section id="puppies" className="py-20 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-bark-dark mb-4">Available Puppies</h2>
-          <p className="text-bark-light max-w-xl mx-auto">Each puppy is health tested, vaccinated, microchipped, and raised in our home with love and care from day one.</p>
-          <div className="mt-6 inline-flex items-center gap-2 bg-moss/10 border border-moss/20 text-moss px-5 py-2 rounded-full text-sm">
-            📋 Formal application required — we carefully screen all buyers
+        <RevealSection>
+          <div className="text-center mb-14">
+            <div className="section-tag">🐕 Our Puppies</div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-bark-dark mb-4">Available Puppies</h2>
+            <p className="text-bark-light max-w-xl mx-auto leading-relaxed">
+              Each puppy is health tested, vaccinated, microchipped, and raised in our home with love and care from day one.
+            </p>
+            <div className="mt-6 inline-flex items-center gap-2 bg-moss/10 border border-moss/20 text-moss px-5 py-2 rounded-full text-sm">
+              📋 Formal application required — we carefully screen all buyers
+            </div>
           </div>
-        </div>
-        <PuppyGrid puppies={puppies} />
+        </RevealSection>
+        <RevealSection delay={1}>
+          <PuppyGrid puppies={puppies} />
+        </RevealSection>
       </section>
 
-      <AboutSection />
-      <GallerySection />
-      <FacebookFeed />
-      <ReviewsSection />
+      <RevealSection>
+        <AboutSection />
+      </RevealSection>
+
+      <RevealSection>
+        <GallerySection />
+      </RevealSection>
+
+      <RevealSection>
+        <FacebookFeed />
+      </RevealSection>
+
+      <RevealSection>
+        <ReviewsSection />
+      </RevealSection>
 
       {/* Application CTA */}
-      <section className="py-20 bg-field text-cream px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Ready to Apply?</h2>
-          <p className="text-cream/70 text-lg mb-4">We take our time matching each puppy with the right family. Our formal application process ensures every Preston Ridge puppy goes to a loving, prepared home.</p>
-          <p className="text-cream/50 text-sm mb-10">We respond to all applications within 2-3 business days.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="rustic-btn px-8 py-4 text-base inline-block">Submit an Application</Link>
-            <Link href="/breed" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-lg hover:bg-tan/10 transition text-base inline-block">Learn About the Breed</Link>
+      <RevealSection>
+        <section className="py-20 bg-field text-cream px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Ready to Apply?</h2>
+            <p className="text-cream/65 text-lg mb-4 leading-relaxed">
+              We take our time matching each puppy with the right family. Our formal application process ensures every Preston Ridge puppy goes to a loving, prepared home.
+            </p>
+            <p className="text-cream/40 text-sm mb-10">We respond to all applications within 2–3 business days.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/apply" className="rustic-btn px-8 py-4 text-base inline-block">Submit an Application</Link>
+              <Link href="/breed" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-xl hover:bg-tan/10 hover:border-tan/60 transition-all duration-200 text-base inline-block">
+                Learn About the Breed
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </RevealSection>
 
       <Footer />
       <WhatsAppButton />

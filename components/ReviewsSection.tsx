@@ -16,6 +16,18 @@ function StarPicker({ value, onChange }: { value: number; onChange: (n: number) 
   );
 }
 
+function getInitials(name: string) {
+  return name.trim().split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+}
+
+const avatarColors = [
+  'bg-bark text-cream',
+  'bg-moss text-cream',
+  'bg-tan text-bark-dark',
+  'bg-moss-dark text-cream',
+  'bg-bark-light text-cream',
+];
+
 export default function ReviewsSection() {
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -51,37 +63,67 @@ export default function ReviewsSection() {
     setSubmitting(false);
   }
 
-  const inp = "w-full px-4 py-3 rounded-xl bg-cream border border-tan/30 focus:outline-none focus:ring-2 focus:ring-bark/30 focus:border-bark text-bark-dark placeholder-bark-light/50 transition text-sm";
+  const inp = "w-full px-4 py-3 rounded-xl bg-cream border border-tan/30 focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark/50 text-bark-dark placeholder-bark-light/40 transition text-sm";
 
   return (
     <section id="reviews" className="py-20 bg-cream">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-14">
+          <div className="section-tag">⭐ Testimonials</div>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-bark-dark mb-4">Happy Families</h2>
-          <p className="text-bark-light max-w-xl mx-auto">Real stories from families who welcomed a Preston Ridge Boykin into their home and field.</p>
+          <p className="text-bark-light max-w-xl mx-auto leading-relaxed">
+            Real stories from families who welcomed a Preston Ridge Boykin into their home and field.
+          </p>
         </div>
 
         {loading ? (
-          <div className="flex justify-center py-10"><Loader2 className="animate-spin text-bark" size={32} /></div>
+          <div className="flex justify-center py-10">
+            <Loader2 className="animate-spin text-bark" size={32} />
+          </div>
         ) : reviews.length === 0 ? (
-          <div className="text-center py-10 text-bark-light">No reviews yet — be the first to share your experience!</div>
+          <div className="text-center py-10 text-bark-light">
+            No reviews yet — be the first to share your experience!
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {reviews.map(r => (
-              <div key={r.id} className="rustic-card p-6 flex flex-col">
-                <div className="flex gap-1 mb-4">
-                  {[1,2,3,4,5].map(n => <Star key={n} size={14} className={n <= r.rating ? 'fill-tan text-tan' : 'text-bark/20'} />)}
+            {reviews.map((r, i) => (
+              <div key={r.id} className="rustic-card p-6 flex flex-col relative overflow-hidden hover:shadow-xl hover:shadow-bark/10 hover:-translate-y-1 transition-all duration-250">
+                {/* Decorative quote mark */}
+                <div className="absolute top-3 right-4 font-display text-7xl text-tan/12 leading-none select-none pointer-events-none" aria-hidden>
+                  "
                 </div>
-                <p className="text-bark-light text-sm leading-relaxed flex-grow mb-4 italic">"{r.review_text}"</p>
+
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-4">
+                  {[1,2,3,4,5].map(n => (
+                    <Star key={n} size={14} className={n <= r.rating ? 'fill-tan text-tan' : 'text-bark/20'} />
+                  ))}
+                </div>
+
+                {/* Review text */}
+                <p className="text-bark-light text-sm leading-relaxed flex-grow mb-5 italic relative z-10">
+                  "{r.review_text}"
+                </p>
+
+                {/* Admin reply */}
                 {r.admin_reply && (
-                  <div className="bg-moss/5 border border-moss/20 rounded-xl p-3 mb-4">
+                  <div className="bg-moss/6 border border-moss/20 rounded-xl p-3 mb-4">
                     <p className="text-xs text-moss font-medium mb-1">🐕 Response from Preston Ridge</p>
                     <p className="text-xs text-bark-light">{r.admin_reply}</p>
                   </div>
                 )}
-                <div className="border-t border-tan/20 pt-4">
-                  <p className="font-semibold text-bark-dark text-sm">{r.reviewer_name}</p>
-                  <p className="text-xs text-bark-light mt-0.5">{r.reviewer_state}{r.puppy_name ? ` · Adopted ${r.puppy_name}` : ''}</p>
+
+                {/* Reviewer info with avatar */}
+                <div className="border-t border-tan/20 pt-4 flex items-center gap-3">
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 ${avatarColors[i % avatarColors.length]}`}>
+                    {getInitials(r.reviewer_name)}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-bark-dark text-sm leading-tight">{r.reviewer_name}</p>
+                    <p className="text-xs text-bark-light mt-0.5">
+                      {r.reviewer_state}{r.puppy_name ? ` · Adopted ${r.puppy_name}` : ''}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -98,24 +140,44 @@ export default function ReviewsSection() {
             <h3 className="font-display text-2xl text-bark-dark mb-6 font-bold">Share Your Experience</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <div><label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5">Name *</label><input name="reviewer_name" required placeholder="Jane Smith" className={inp} /></div>
-                <div><label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5">State *</label><input name="reviewer_state" required placeholder="Texas" className={inp} /></div>
+                <div>
+                  <label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5 font-medium">Name *</label>
+                  <input name="reviewer_name" required placeholder="Jane Smith" className={inp} />
+                </div>
+                <div>
+                  <label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5 font-medium">State *</label>
+                  <input name="reviewer_state" required placeholder="Texas" className={inp} />
+                </div>
               </div>
-              <div><label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5">Email</label><input name="reviewer_email" type="email" placeholder="jane@email.com" className={inp} /></div>
-              <div><label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5">Puppy Name (optional)</label><input name="puppy_name" placeholder="Which puppy did you adopt?" className={inp} /></div>
-              <div><label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5">Rating *</label><StarPicker value={rating} onChange={setRating} /></div>
-              <div><label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5">Review *</label><textarea name="review_text" required rows={4} placeholder="Tell others about your experience..." className={`${inp} resize-none`} /></div>
-              <div className="flex gap-3">
-                <button type="submit" disabled={submitting} className="flex-1 rustic-btn py-3 flex items-center justify-center gap-2 disabled:opacity-70">
+              <div>
+                <label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5 font-medium">Email</label>
+                <input name="reviewer_email" type="email" placeholder="jane@email.com" className={inp} />
+              </div>
+              <div>
+                <label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5 font-medium">Puppy Name (optional)</label>
+                <input name="puppy_name" placeholder="Which puppy did you adopt?" className={inp} />
+              </div>
+              <div>
+                <label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5 font-medium">Rating *</label>
+                <StarPicker value={rating} onChange={setRating} />
+              </div>
+              <div>
+                <label className="text-xs text-bark-light uppercase tracking-wide block mb-1.5 font-medium">Review *</label>
+                <textarea name="review_text" required rows={4} placeholder="Tell others about your experience..." className={`${inp} resize-none`} />
+              </div>
+              <div className="flex gap-3 pt-1">
+                <button type="submit" disabled={submitting} className="flex-1 rustic-btn py-3 flex items-center justify-center gap-2 disabled:opacity-60 disabled:transform-none">
                   {submitting ? <><Loader2 size={16} className="animate-spin" />Submitting...</> : 'Submit Review'}
                 </button>
-                <button type="button" onClick={() => setShowForm(false)} className="px-5 py-3 border border-tan/30 rounded-xl text-bark hover:bg-cream-dark transition">Cancel</button>
+                <button type="button" onClick={() => setShowForm(false)} className="px-5 py-3 border border-tan/30 rounded-xl text-bark hover:bg-cream-dark transition text-sm">
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
         ) : (
           <div className="text-center">
-            <button onClick={() => setShowForm(true)} className="border border-bark/30 text-bark px-8 py-3 rounded-full hover:bg-bark hover:text-cream transition font-medium">
+            <button onClick={() => setShowForm(true)} className="border border-bark/25 text-bark px-8 py-3 rounded-full hover:bg-bark hover:text-cream transition-all duration-200 font-medium text-sm">
               🐕 Leave a Review
             </button>
           </div>
