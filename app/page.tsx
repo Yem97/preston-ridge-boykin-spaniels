@@ -13,7 +13,7 @@ import RevealSection from '@/components/RevealSection';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import type { Puppy } from '@/types';
 import Link from 'next/link';
-import { Shield, Award, Star } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 async function getPuppies(): Promise<Puppy[]> {
   try {
@@ -32,17 +32,11 @@ export default async function Home() {
 
       {/* Certifications bar */}
       <div className="bg-bark py-4 px-4">
-        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-8">
-          {[
-            { icon: Shield, label: 'BSS Registered Breeder' },
-            { icon: Award, label: 'AKC Registered' },
-            { icon: Star, label: 'UKC Registered' },
-          ].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2 text-cream/80 text-sm">
-              <Icon size={15} className="text-tan" />{label}
-            </div>
-          ))}
-          <div className="flex items-center gap-2 text-cream/80 text-sm">❤️ OFA Health Tested</div>
+        <div className="max-w-6xl mx-auto flex items-center justify-center">
+          <div className="flex items-center gap-2 text-cream/85 text-sm">
+            <Award size={15} className="text-tan" />
+            AKC Registered
+          </div>
         </div>
       </div>
 

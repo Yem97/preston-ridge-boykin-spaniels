@@ -1,14 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Shield, Award, Heart, Star, ChevronDown } from 'lucide-react';
-
-const badges = [
-  { label: 'BSS Registered', icon: Shield },
-  { label: 'AKC Registered', icon: Award },
-  { label: 'UKC Registered', icon: Star },
-  { label: 'Health Tested', icon: Heart },
-];
+import { Award, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
@@ -79,16 +72,13 @@ export default function Hero() {
           </Link>
         </div>
 
-        {/* Trust badges */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
-          {badges.map(({ label, icon: Icon }) => (
-            <div key={label}
-              className="rounded-xl p-4 flex flex-col items-center gap-2 backdrop-blur-sm border transition-all duration-200 hover:border-tan/40 cursor-default"
-              style={{ background: 'rgba(28,43,26,0.5)', borderColor: 'rgba(196,154,90,0.18)' }}>
-              <Icon size={18} className="text-tan" />
-              <span className="text-xs text-cream/60 font-light tracking-wide">{label}</span>
-            </div>
-          ))}
+        {/* AKC badge */}
+        <div className="flex justify-center">
+          <div className="inline-flex items-center gap-2.5 rounded-xl px-6 py-3 backdrop-blur-sm border"
+            style={{ background: 'rgba(30,10,2,0.5)', borderColor: 'rgba(212,128,42,0.25)' }}>
+            <Award size={18} className="text-tan" />
+            <span className="text-sm text-cream/70 font-light tracking-wide">AKC Registered</span>
+          </div>
         </div>
       </div>
 
