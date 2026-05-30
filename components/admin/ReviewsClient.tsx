@@ -25,6 +25,8 @@ export default function ReviewsClient() {
   useEffect(() => { fetchReviews(); }, [fetchReviews]);
 
   const approve = async (id: string) => {
+    // Optimistic update — move it to approved immediately
+    setReviews(prev => prev.map(r => r.id === id ? { ...r, is_approved: true } : r));
     try {
       const res = await fetch(`/api/reviews/${id}`, {
         method: 'PATCH',
@@ -32,19 +34,22 @@ export default function ReviewsClient() {
         body: JSON.stringify({ is_approved: true }),
       });
       if (!res.ok) throw new Error('Failed to approve');
-      await fetchReviews();
     } catch (err) {
       console.error('Approve error:', err);
+      await fetchReviews(); // revert on error
     }
   };
 
   const reject = async (id: string) => {
     if (!confirm('Delete this review?')) return;
+    // Optimistic update — remove immediately
+    setReviews(prev => prev.filter(r => r.id !== id));
     try {
-      await fetch(`/api/reviews/${id}`, { method: 'DELETE' });
-      await fetchReviews();
+      const res = await fetch(`/api/reviews/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Failed to delete');
     } catch (err) {
       console.error('Delete error:', err);
+      await fetchReviews(); // revert on error
     }
   };
 

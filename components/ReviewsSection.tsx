@@ -37,7 +37,7 @@ export default function ReviewsSection() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    fetch('/api/reviews')
+    fetch('/api/reviews', { cache: 'no-store' })
       .then(r => r.json())
       .then(d => { setReviews(d?.reviews ?? []); setLoading(false); })
       .catch(() => setLoading(false));
