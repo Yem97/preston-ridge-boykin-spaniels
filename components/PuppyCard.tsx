@@ -31,12 +31,12 @@ export default function PuppyCard({ puppy, onClick, onApply }: Props) {
       }}
     >
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-60 overflow-hidden" style={{ background: '#FFF8EE' }}>
         {puppy.image_url
-          ? <Image src={puppy.image_url} alt={puppy.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="400px" />
+          ? <Image src={puppy.image_url} alt={puppy.name} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="400px" />
           : <div className="w-full h-full bg-cream-dark flex items-center justify-center text-6xl">🐕</div>
         }
-        <div className="absolute inset-0 bg-gradient-to-t from-bark-dark/60 via-bark-dark/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bark-dark/40 via-transparent to-transparent" />
 
         {/* Status badge */}
         <span className={`absolute top-3 right-3 text-xs font-medium px-3 py-1 rounded-full border backdrop-blur-sm ${statusStyles[puppy.status] ?? statusStyles.available}`}>
