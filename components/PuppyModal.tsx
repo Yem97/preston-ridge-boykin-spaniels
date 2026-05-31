@@ -22,13 +22,19 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
       <div className="absolute inset-0 bg-bark-dark/70 backdrop-blur-sm" />
       <div className="relative bg-parchment rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto z-10 border border-tan/30 shadow-2xl" onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-cream rounded-full p-2 text-bark hover:bg-cream-dark transition"><X size={18} /></button>
-        <div className="relative w-full rounded-t-2xl overflow-hidden" style={{ height: 320, background: '#FFF8EE' }}>
-          {puppy.image_url
-            ? <Image src={puppy.image_url} alt={puppy.name} fill className="object-contain" sizes="672px" />
-            : <div className="w-full h-full bg-cream-dark flex items-center justify-center text-6xl">🐕</div>
-          }
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-parchment to-transparent" />
-        </div>
+        {puppy.image_url ? (
+          <div className="w-full rounded-t-2xl overflow-hidden" style={{ background: '#FFF8EE' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={puppy.image_url}
+              alt={puppy.name}
+              className="w-full h-auto block"
+              style={{ maxHeight: 480, objectFit: 'contain' }}
+            />
+          </div>
+        ) : (
+          <div className="w-full h-48 rounded-t-2xl bg-cream-dark flex items-center justify-center text-6xl">🐕</div>
+        )}
         <div className="p-6">
           <div className="flex items-start justify-between mb-2">
             <h2 className="font-display text-3xl font-semibold text-bark-dark">{puppy.name}</h2>
