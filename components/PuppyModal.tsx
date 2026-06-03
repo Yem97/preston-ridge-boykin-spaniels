@@ -1,5 +1,6 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { Puppy } from '@/types';
 import { X } from 'lucide-react';
 
@@ -7,6 +8,9 @@ interface Props { puppy: Puppy; onClose: () => void; onApply: () => void; }
 
 export default function PuppyModal({ puppy, onClose, onApply }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -20,7 +24,9 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
   const sc: Record<string,string> = { available: 'bg-moss/20 text-moss', reserved: 'bg-tan/20 text-bark', sold: 'bg-bark/10 text-bark-light' };
   const sl: Record<string,string> = { available: 'Available', reserved: 'Reserved', sold: 'Adopted' };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-bark-dark/70 backdrop-blur-sm" />
       <div ref={scrollRef} className="relative bg-parchment rounded-2xl max-w-2xl w-full overflow-y-auto z-10 border border-tan/30 shadow-2xl" style={{ maxHeight: 'calc(100dvh - 2rem)' }} onClick={e => e.stopPropagation()}>
@@ -65,6 +71,7 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
