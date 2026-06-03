@@ -30,30 +30,36 @@ export default function PuppyCard({ puppy, onClick, onApply }: Props) {
       }}
     >
       {/* Image */}
-      <div className="relative flex items-center justify-center overflow-hidden" style={{ background: '#FFF8EE', minHeight: 200 }}>
-        {puppy.image_url
-          ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
+      <div className="relative h-60 overflow-hidden">
+        {puppy.image_url ? (
+          <>
+            {/* Blurred backdrop fills the frame — no flat side bars */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={puppy.image_url} alt="" aria-hidden
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: 'blur(20px) brightness(0.82)', transform: 'scale(1.18)' }} />
+            {/* Full image, fully visible */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={puppy.image_url} alt={puppy.name}
-              className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
-              style={{ maxHeight: 340, objectFit: 'contain' }} />
-          )
-          : <div className="w-full flex items-center justify-center text-6xl" style={{ height: 200 }}>🐕</div>
-        }
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-bark-dark/40 to-transparent pointer-events-none" />
+              className="relative z-[1] w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-cream-dark flex items-center justify-center text-6xl">🐕</div>
+        )}
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-bark-dark/40 to-transparent pointer-events-none z-[2]" />
 
         {/* Status badge */}
-        <span className={`absolute top-3 right-3 text-xs font-medium px-3 py-1 rounded-full border backdrop-blur-sm ${statusStyles[puppy.status] ?? statusStyles.available}`}>
+        <span className={`absolute top-3 right-3 z-[3] text-xs font-medium px-3 py-1 rounded-full border backdrop-blur-sm ${statusStyles[puppy.status] ?? statusStyles.available}`}>
           {statusLabels[puppy.status] ?? 'Available'}
         </span>
 
         {puppy.is_featured && (
-          <span className="absolute top-3 left-3 text-xs font-medium px-3 py-1 rounded-full bg-tan/25 text-cream border border-tan/40 backdrop-blur-sm">
+          <span className="absolute top-3 left-3 z-[3] text-xs font-medium px-3 py-1 rounded-full bg-tan/25 text-cream border border-tan/40 backdrop-blur-sm">
             ⭐ Featured
           </span>
         )}
         {puppy.litter_name && (
-          <span className="absolute bottom-3 left-3 text-xs text-cream/80 bg-field/65 px-2.5 py-1 rounded-full backdrop-blur-sm">
+          <span className="absolute bottom-3 left-3 z-[3] text-xs text-cream/80 bg-field/65 px-2.5 py-1 rounded-full backdrop-blur-sm">
             {puppy.litter_name}
           </span>
         )}

@@ -73,11 +73,14 @@ export default function FacebookFeed() {
             {posts.map(post => (
               <div key={post.id} className="rustic-card overflow-hidden hover:shadow-lg transition group">
                 {post.image_url && (
-                  <div className="w-full flex items-center justify-center overflow-hidden" style={{ background: '#FFF8EE' }}>
+                  <div className="relative h-52 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={post.image_url} alt="" aria-hidden
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ filter: 'blur(20px) brightness(0.82)', transform: 'scale(1.18)' }} />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={post.image_url} alt="Post"
-                      className="w-full h-auto block"
-                      style={{ maxHeight: 360, objectFit: 'contain' }} />
+                      className="relative z-[1] w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                   </div>
                 )}
                 <div className="p-5">

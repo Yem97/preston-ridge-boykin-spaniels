@@ -23,23 +23,23 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
       <div className="relative bg-parchment rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden z-10 border border-tan/30 shadow-2xl" onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-cream rounded-full p-2 text-bark hover:bg-cream-dark transition shadow-md"><X size={18} /></button>
 
-        {/* Image area — full photo always visible, capped so content stays reachable */}
+        {/* Image area — full photo always visible, blurred backdrop fills the frame (no bars) */}
         {puppy.image_url ? (
-          <div className="w-full flex-shrink-0 flex items-center justify-center rounded-t-2xl overflow-hidden" style={{ background: '#FFF8EE', maxHeight: '45vh' }}>
+          <div className="relative w-full flex-shrink-0 rounded-t-2xl overflow-hidden" style={{ height: '42vh' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={puppy.image_url}
-              alt={puppy.name}
-              className="w-full h-auto block"
-              style={{ maxHeight: '45vh', objectFit: 'contain' }}
-            />
+            <img src={puppy.image_url} alt="" aria-hidden
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: 'blur(26px) brightness(0.8)', transform: 'scale(1.18)' }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={puppy.image_url} alt={puppy.name}
+              className="relative z-[1] w-full h-full object-contain" />
           </div>
         ) : (
           <div className="w-full h-48 flex-shrink-0 rounded-t-2xl bg-cream-dark flex items-center justify-center text-6xl">🐕</div>
         )}
 
         {/* Scrollable content */}
-        <div className="p-6 overflow-y-auto">
+        <div className="p-6 overflow-y-auto flex-1 min-h-0">
           <div className="flex items-start justify-between mb-2">
             <h2 className="font-display text-3xl font-semibold text-bark-dark">{puppy.name}</h2>
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${sc[puppy.status]}`}>{sl[puppy.status]}</span>
