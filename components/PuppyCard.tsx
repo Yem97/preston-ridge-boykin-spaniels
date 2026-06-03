@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import type { Puppy } from '@/types';
 
 interface Props { puppy: Puppy; onClick: () => void; onApply: () => void; }
@@ -31,12 +30,17 @@ export default function PuppyCard({ puppy, onClick, onApply }: Props) {
       }}
     >
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative flex items-center justify-center overflow-hidden" style={{ background: '#FFF8EE', minHeight: 200 }}>
         {puppy.image_url
-          ? <Image src={puppy.image_url} alt={puppy.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="400px" />
-          : <div className="w-full h-full bg-cream-dark flex items-center justify-center text-6xl">🐕</div>
+          ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={puppy.image_url} alt={puppy.name}
+              className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+              style={{ maxHeight: 340, objectFit: 'contain' }} />
+          )
+          : <div className="w-full flex items-center justify-center text-6xl" style={{ height: 200 }}>🐕</div>
         }
-        <div className="absolute inset-0 bg-gradient-to-t from-bark-dark/50 via-bark-dark/5 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-bark-dark/40 to-transparent pointer-events-none" />
 
         {/* Status badge */}
         <span className={`absolute top-3 right-3 text-xs font-medium px-3 py-1 rounded-full border backdrop-blur-sm ${statusStyles[puppy.status] ?? statusStyles.available}`}>
