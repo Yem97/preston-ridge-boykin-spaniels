@@ -21,7 +21,7 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
   const sl: Record<string,string> = { available: 'Available', reserved: 'Reserved', sold: 'Adopted' };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-bark-dark/70 backdrop-blur-sm" />
       <div ref={scrollRef} className="relative bg-parchment rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto z-10 border border-tan/30 shadow-2xl" onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-cream rounded-full p-2 text-bark hover:bg-cream-dark transition shadow-md"><X size={18} /></button>
