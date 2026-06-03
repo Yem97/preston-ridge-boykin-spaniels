@@ -23,12 +23,12 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-bark-dark/70 backdrop-blur-sm" />
-      <div ref={scrollRef} className="relative bg-parchment rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto z-10 border border-tan/30 shadow-2xl" onClick={e => e.stopPropagation()}>
+      <div ref={scrollRef} className="relative bg-parchment rounded-2xl max-w-2xl w-full overflow-y-auto z-10 border border-tan/30 shadow-2xl" style={{ maxHeight: 'calc(100dvh - 2rem)' }} onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-cream rounded-full p-2 text-bark hover:bg-cream-dark transition shadow-md"><X size={18} /></button>
 
         {/* Image area — full photo, blurred backdrop fills the frame (no bars). Scrolls with the rest. */}
         {puppy.image_url ? (
-          <div className="relative w-full rounded-t-2xl overflow-hidden" style={{ height: 360 }}>
+          <div className="relative w-full rounded-t-2xl overflow-hidden" style={{ height: 'min(40vh, 360px)' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={puppy.image_url} alt="" aria-hidden
               className="absolute inset-0 w-full h-full object-cover"
