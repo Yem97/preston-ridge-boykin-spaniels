@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { Heart, ExternalLink } from 'lucide-react';
 
 function FbIcon({ size = 20 }: { size?: number }) {
@@ -74,9 +73,11 @@ export default function FacebookFeed() {
             {posts.map(post => (
               <div key={post.id} className="rustic-card overflow-hidden hover:shadow-lg transition group">
                 {post.image_url && (
-                  <div className="relative h-48 overflow-hidden">
-                    <Image src={post.image_url} alt="Post" fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="400px" />
+                  <div className="w-full flex items-center justify-center overflow-hidden" style={{ background: '#FFF8EE' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={post.image_url} alt="Post"
+                      className="w-full h-auto block"
+                      style={{ maxHeight: 360, objectFit: 'contain' }} />
                   </div>
                 )}
                 <div className="p-5">
