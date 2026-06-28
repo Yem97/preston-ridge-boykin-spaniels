@@ -1,8 +1,9 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Link from 'next/link';
 import type { Puppy } from '@/types';
-import { X } from 'lucide-react';
+import { X, ExternalLink } from 'lucide-react';
 
 interface Props { puppy: Puppy; onClose: () => void; onApply: () => void; }
 
@@ -53,7 +54,10 @@ export default function PuppyModal({ puppy, onClose, onApply }: Props) {
             <h2 className="font-display text-3xl font-semibold text-bark-dark">{puppy.name}</h2>
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${sc[puppy.status]}`}>{sl[puppy.status]}</span>
           </div>
-          <p className="text-bark-light capitalize mb-5">{puppy.color} · {puppy.gender} · {puppy.age_weeks} weeks old</p>
+          <p className="text-bark-light capitalize mb-2">{puppy.color} · {puppy.gender} · {puppy.age_weeks} weeks old</p>
+          <Link href={`/puppies/${puppy.id}`} className="inline-flex items-center gap-1.5 text-tan hover:text-bark transition text-sm mb-5">
+            View full page & share <ExternalLink size={13} />
+          </Link>
           <div className="grid grid-cols-2 gap-3 mb-5">
             {[['Color', puppy.color], ['Gender', puppy.gender], ['Age', `${puppy.age_weeks} weeks`], ['Price', `$${puppy.price_usd.toLocaleString()}`]].map(([k, v]) => (
               <div key={k} className="bg-cream rounded-xl p-3 border border-tan/20">
