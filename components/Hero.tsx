@@ -65,9 +65,7 @@ export default function Hero({ images = [] }: { images?: string[] }) {
             {pics.length > 0 ? (
               <div className="grid grid-cols-2 gap-4">
                 {/* Featured image */}
-                <div className="col-span-2 relative rounded-3xl overflow-hidden shadow-xl shadow-bark/10 border border-white" style={{ height: 320 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={pics[0]} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(22px) brightness(0.85)', transform: 'scale(1.18)' }} />
+                <div className="col-span-2 relative rounded-3xl overflow-hidden shadow-xl shadow-bark/10 border border-white" style={{ height: 320, background: '#FAF4EA' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={pics[0]} alt="Boykin Spaniel puppy" className="relative z-[1] w-full h-full object-contain" />
                   <div className="absolute z-[2] bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-md">
@@ -76,17 +74,13 @@ export default function Hero({ images = [] }: { images?: string[] }) {
                   </div>
                 </div>
                 {pics[1] && (
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180 }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={pics[1]} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(20px) brightness(0.85)', transform: 'scale(1.18)' }} />
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180, background: '#FAF4EA' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={pics[1]} alt="Boykin Spaniel puppy" className="relative z-[1] w-full h-full object-contain" />
                   </div>
                 )}
                 {pics[2] ? (
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180 }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={pics[2]} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(20px) brightness(0.85)', transform: 'scale(1.18)' }} />
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180, background: '#FAF4EA' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={pics[2]} alt="Boykin Spaniel puppy" className="relative z-[1] w-full h-full object-contain" />
                   </div>
