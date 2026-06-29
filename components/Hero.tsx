@@ -64,34 +64,27 @@ export default function Hero({ images = [] }: { images?: string[] }) {
           <div className={`relative transition-all duration-1000 delay-150 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {pics.length > 0 ? (
               <div className="grid grid-cols-2 gap-4">
-                {/* Featured image */}
-                <div className="col-span-2 relative rounded-3xl overflow-hidden shadow-xl shadow-bark/10 border border-white" style={{ height: 320, background: '#FAF4EA' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={pics[0]} alt="Boykin Spaniel puppy" className="relative z-[1] w-full h-full object-contain" />
-                  <div className="absolute z-[2] bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-md">
-                    <p className="font-display text-bark-dark font-bold text-sm">Meet our puppies</p>
-                    <p className="text-bark-light text-xs">Available now</p>
-                  </div>
-                </div>
-                {pics[1] && (
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180, background: '#FAF4EA' }}>
+                {pics.map((src, i) => (
+                  <div key={i} className="relative aspect-square rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ background: '#FAF4EA' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={pics[1]} alt="Boykin Spaniel puppy" className="relative z-[1] w-full h-full object-contain" />
+                    <img src={src} alt="Boykin Spaniel puppy" className="w-full h-full object-contain" />
+                    {i === 0 && (
+                      <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-xl px-3.5 py-2 shadow-md">
+                        <p className="font-display text-bark-dark font-bold text-sm leading-tight">Meet our puppies</p>
+                        <p className="text-bark-light text-xs">Available now</p>
+                      </div>
+                    )}
                   </div>
-                )}
-                {pics[2] ? (
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180, background: '#FAF4EA' }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={pics[2]} alt="Boykin Spaniel puppy" className="relative z-[1] w-full h-full object-contain" />
-                  </div>
-                ) : (
-                  <div className="rounded-2xl bg-gradient-to-br from-tan/15 to-bark/10 flex items-center justify-center" style={{ height: 180 }}>
-                    <span className="text-5xl">🐾</span>
-                  </div>
-                )}
+                ))}
+                {/* Accent tile fills the grid evenly */}
+                <Link href="/#puppies" className="aspect-square rounded-2xl flex flex-col items-center justify-center text-center p-4 shadow-lg shadow-bark/10 hover:scale-[1.02] transition-transform"
+                  style={{ background: 'linear-gradient(145deg, #E8922E 0%, #D4802A 60%, #B86018 100%)' }}>
+                  <span className="text-3xl mb-2">🐾</span>
+                  <span className="text-cream font-display font-bold leading-tight">See all<br />available puppies</span>
+                </Link>
               </div>
             ) : (
-              <div className="rounded-3xl bg-gradient-to-br from-tan/15 to-bark/10 flex items-center justify-center shadow-xl" style={{ height: 420 }}>
+              <div className="rounded-3xl bg-gradient-to-br from-tan/15 to-bark/10 flex items-center justify-center shadow-xl aspect-square">
                 <span className="text-8xl">🐕</span>
               </div>
             )}
