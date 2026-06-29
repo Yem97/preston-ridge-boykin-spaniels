@@ -18,19 +18,19 @@ export default function PuppyCard({ puppy, onClick, onApply }: Props) {
   return (
     <div
       onClick={onClick}
-      className="rustic-card overflow-hidden cursor-pointer group"
-      style={{ transition: 'box-shadow 0.25s ease, transform 0.25s ease' }}
+      className="bg-white rounded-2xl border border-tan/15 overflow-hidden cursor-pointer group"
+      style={{ transition: 'box-shadow 0.25s ease, transform 0.25s ease', boxShadow: '0 2px 14px rgba(74,30,8,0.06)' }}
       onMouseEnter={e => {
         (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 40px rgba(74,30,8,0.16), 0 4px 12px rgba(74,30,8,0.1)';
+        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 20px 44px rgba(74,30,8,0.14), 0 4px 12px rgba(74,30,8,0.08)';
       }}
       onMouseLeave={e => {
         (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
-        (e.currentTarget as HTMLDivElement).style.boxShadow = '';
+        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 14px rgba(74,30,8,0.06)';
       }}
     >
       {/* Image */}
-      <div className="relative h-60 overflow-hidden">
+      <div className="relative h-72 overflow-hidden">
         {puppy.image_url ? (
           <>
             {/* Blurred backdrop fills the frame — no flat side bars */}

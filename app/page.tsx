@@ -78,16 +78,17 @@ export default async function Home() {
 
       {/* Application CTA */}
       <RevealSection>
-        <section className="py-20 bg-field text-cream px-4">
+        <section className="py-24 px-4" style={{ background: 'linear-gradient(165deg, #FFFBF4 0%, #FDF3E3 100%)' }}>
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Ready to Apply?</h2>
-            <p className="text-cream/65 text-lg mb-4 leading-relaxed">
+            <div className="section-tag">🐾 Ready When You Are</div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-bark-dark mb-4">Ready to Apply?</h2>
+            <p className="text-bark-light text-lg mb-4 leading-relaxed">
               We take our time matching each puppy with the right family. Our formal application process ensures every Preston Ridge puppy goes to a loving, prepared home.
             </p>
-            <p className="text-cream/40 text-sm mb-10">We respond to all applications within 2–3 business days.</p>
+            <p className="text-bark-light/60 text-sm mb-10">We respond to all applications within 2–3 business days.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/apply" className="rustic-btn px-8 py-4 text-base inline-block">Submit an Application</Link>
-              <Link href="/breed" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-xl hover:bg-tan/10 hover:border-tan/60 transition-all duration-200 text-base inline-block">
+              <Link href="/breed" className="border border-bark/20 text-bark font-medium px-8 py-4 rounded-xl hover:bg-bark hover:text-cream transition-all duration-200 text-base inline-block">
                 Learn About the Breed
               </Link>
             </div>
