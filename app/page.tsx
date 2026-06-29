@@ -24,19 +24,20 @@ async function getPuppies(): Promise<Puppy[]> {
 
 export default async function Home() {
   const puppies = await getPuppies();
+  const heroImages = puppies.map(p => p.image_url).filter((u): u is string => Boolean(u)).slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-cream">
+    <main className="min-h-screen bg-white">
       <Navbar />
-      <Hero />
+      <Hero images={heroImages} />
 
       {/* Certifications bar */}
-      <div className="bg-bark py-4 px-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-center">
-          <div className="flex items-center gap-2 text-cream/85 text-sm">
-            <Award size={15} className="text-tan" />
-            AKC Registered
-          </div>
+      <div className="bg-parchment border-y border-tan/15 py-4 px-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-bark-light text-sm">
+          <span className="flex items-center gap-2"><Award size={15} className="text-tan" /> AKC Registered</span>
+          <span className="flex items-center gap-2"><Award size={15} className="text-tan" /> BSS Registered</span>
+          <span className="flex items-center gap-2"><Award size={15} className="text-tan" /> UKC Registered</span>
+          <span className="flex items-center gap-2"><Award size={15} className="text-tan" /> Health Tested</span>
         </div>
       </div>
 

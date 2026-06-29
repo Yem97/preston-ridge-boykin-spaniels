@@ -1,96 +1,118 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Award, ChevronDown } from 'lucide-react';
+import { Award, ShieldCheck, Heart, ChevronDown } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({ images = [] }: { images?: string[] }) {
   const [visible, setVisible] = useState(false);
-  useEffect(() => { setTimeout(() => setVisible(true), 80); }, []);
+  useEffect(() => { const t = setTimeout(() => setVisible(true), 60); return () => clearTimeout(t); }, []);
+
+  const pics = images.filter(Boolean).slice(0, 3);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Base gradient */}
-      <div className="absolute inset-0 field-bg" />
-
-      {/* Atmospheric light orbs */}
+    <section className="relative overflow-hidden" style={{ background: 'linear-gradient(165deg, #FFFFFF 0%, #FFFBF4 45%, #FDF3E3 100%)' }}>
+      {/* Soft warm glow accents */}
       <div className="absolute pointer-events-none" style={{
-        width: '700px', height: '700px',
-        top: '-180px', left: '-120px',
-        background: 'radial-gradient(circle, rgba(212,128,42,0.16) 0%, transparent 68%)',
-        animation: 'orb-drift 16s ease-in-out infinite',
+        width: 600, height: 600, top: -200, right: -120,
+        background: 'radial-gradient(circle, rgba(212,128,42,0.10) 0%, transparent 70%)',
       }} />
       <div className="absolute pointer-events-none" style={{
-        width: '900px', height: '700px',
-        top: '5%', right: '-250px',
-        background: 'radial-gradient(circle, rgba(100,40,8,0.14) 0%, transparent 65%)',
-        animation: 'orb-drift 22s ease-in-out infinite reverse',
-      }} />
-      <div className="absolute pointer-events-none" style={{
-        width: '800px', height: '600px',
-        bottom: '80px', left: '10%',
-        background: 'radial-gradient(circle, rgba(74,30,8,0.1) 0%, transparent 65%)',
-        animation: 'orb-drift 28s ease-in-out infinite',
+        width: 500, height: 500, bottom: -180, left: -140,
+        background: 'radial-gradient(circle, rgba(74,30,8,0.05) 0%, transparent 70%)',
       }} />
 
-      {/* Texture overlay */}
-      <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23C49A5A\' fill-opacity=\'0.8\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-32 pb-20 lg:pt-36 lg:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      {/* Radial vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 35%, rgba(14,22,13,0.45) 100%)' }} />
+          {/* Left — copy */}
+          <div className={`transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <div className="inline-flex items-center gap-2 border border-tan/40 text-bark text-xs px-4 py-2 rounded-full mb-7 tracking-widest uppercase bg-white/80 backdrop-blur-sm">
+              🌿 Family Raised · Field Ready
+            </div>
 
-      {/* Content */}
-      <div className={`relative z-10 text-center px-4 max-w-5xl mx-auto pt-24 transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="font-display text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.05] text-bark-dark mb-6">
+              Premium Boykin<br />
+              Spaniels, <em className="text-tan italic">raised<br className="hidden md:block" /> with love</em>
+            </h1>
 
-        {/* Pre-title pill */}
-        <div className="inline-flex items-center gap-2 border border-tan/35 text-tan/85 text-xs font-light px-5 py-2 rounded-full mb-8 tracking-widest uppercase backdrop-blur-sm"
-          style={{ background: 'rgba(28,43,26,0.45)' }}>
-          🌿 Family Raised · Field Ready
-        </div>
+            <p className="text-bark-light text-lg max-w-lg mb-3 leading-relaxed font-rustic italic">
+              "The dog that doesn't rock the boat"
+            </p>
+            <p className="text-bark-light/80 text-base max-w-lg mb-9 leading-relaxed">
+              Health-tested, home-raised Boykins bred for the field and the family.
+              BSS · AKC · UKC registered, and raised with love in the USA.
+            </p>
 
-        {/* Main headline */}
-        <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6">
-          <span className="text-cream">Preston Ridge</span><br />
-          <em className="text-tan italic" style={{ textShadow: '0 0 80px rgba(212,128,42,0.3)' }}>
-            Boykin Spaniels
-          </em>
-        </h1>
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Link href="/#puppies" className="rustic-btn px-8 py-4 text-base text-center">
+                View Available Puppies
+              </Link>
+              <Link href="/apply" className="px-8 py-4 rounded-xl border border-bark/20 text-bark font-medium hover:bg-bark hover:text-cream transition-all duration-200 text-base text-center">
+                Apply for a Puppy
+              </Link>
+            </div>
 
-        <p className="font-rustic text-cream/70 text-lg md:text-xl max-w-2xl mx-auto mb-4 font-light leading-relaxed italic">
-          "The dog that doesn't rock the boat"
-        </p>
-        <p className="text-cream/50 text-base max-w-xl mx-auto mb-10 font-light leading-relaxed">
-          Premium home-raised Boykins bred for the field and the family. Health tested, BSS · AKC · UKC registered, and raised with love in the USA.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
-          <Link href="/#puppies" className="rustic-btn px-8 py-4 text-base inline-block">
-            View Available Puppies
-          </Link>
-          <Link href="/apply" className="border border-tan/40 text-tan font-medium px-8 py-4 rounded-xl hover:bg-tan/10 hover:border-tan/65 transition-all duration-200 text-base inline-block backdrop-blur-sm">
-            Apply for a Puppy
-          </Link>
-        </div>
-
-        {/* AKC badge */}
-        <div className="flex justify-center">
-          <div className="inline-flex items-center gap-2.5 rounded-xl px-6 py-3 backdrop-blur-sm border"
-            style={{ background: 'rgba(30,10,2,0.5)', borderColor: 'rgba(212,128,42,0.25)' }}>
-            <Award size={18} className="text-tan" />
-            <span className="text-sm text-cream/70 font-light tracking-wide">AKC Registered</span>
+            {/* Trust row */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-bark-light">
+              <span className="inline-flex items-center gap-2"><Award size={16} className="text-tan" /> AKC Registered</span>
+              <span className="inline-flex items-center gap-2"><ShieldCheck size={16} className="text-tan" /> Health Tested</span>
+              <span className="inline-flex items-center gap-2"><Heart size={16} className="text-tan" /> Family Raised</span>
+            </div>
           </div>
+
+          {/* Right — photo collage of real puppies */}
+          <div className={`relative transition-all duration-1000 delay-150 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {pics.length > 0 ? (
+              <div className="grid grid-cols-2 gap-4">
+                {/* Featured image */}
+                <div className="col-span-2 relative rounded-3xl overflow-hidden shadow-xl shadow-bark/10 border border-white" style={{ height: 320 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={pics[0]} alt="Boykin Spaniel puppy" className="w-full h-full object-cover" />
+                  <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-md">
+                    <p className="font-display text-bark-dark font-bold text-sm">Meet our puppies</p>
+                    <p className="text-bark-light text-xs">Available now</p>
+                  </div>
+                </div>
+                {pics[1] && (
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={pics[1]} alt="Boykin Spaniel puppy" className="w-full h-full object-cover" />
+                  </div>
+                )}
+                {pics[2] ? (
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-bark/10 border border-white" style={{ height: 180 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={pics[2]} alt="Boykin Spaniel puppy" className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="rounded-2xl bg-gradient-to-br from-tan/15 to-bark/10 flex items-center justify-center" style={{ height: 180 }}>
+                    <span className="text-5xl">🐾</span>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="rounded-3xl bg-gradient-to-br from-tan/15 to-bark/10 flex items-center justify-center shadow-xl" style={{ height: 420 }}>
+                <span className="text-8xl">🐕</span>
+              </div>
+            )}
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-5 -left-5 hidden sm:flex items-center gap-3 bg-white rounded-2xl px-5 py-4 shadow-xl border border-tan/15">
+              <div className="w-11 h-11 rounded-full bg-tan/15 flex items-center justify-center text-xl">🏆</div>
+              <div>
+                <p className="font-display font-bold text-bark-dark leading-tight">Field Ready</p>
+                <p className="text-bark-light text-xs">& Family Loved</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10 select-none"
-        style={{ animation: 'scroll-bounce 2.4s ease-in-out infinite' }}>
-        <span className="text-xs text-cream/25 tracking-widest uppercase font-light">Scroll</span>
-        <ChevronDown size={15} className="text-cream/25" />
+      {/* Scroll cue */}
+      <div className="flex justify-center pb-8 -mt-4">
+        <ChevronDown size={20} className="text-bark/30" style={{ animation: 'scroll-bounce 2.4s ease-in-out infinite' }} />
       </div>
-
-      {/* Bottom fade to cream */}
-      <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-cream via-cream/50 to-transparent" />
     </section>
   );
 }
